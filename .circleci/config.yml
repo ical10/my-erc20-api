@@ -1,6 +1,17 @@
 version: 2.1
 orbs:
   heroku: circleci/heroku@1.0.1
+  dotenv: anilanar/dotenv@1.0.0
+jobs:
+  build:
+    docker:
+      - image: 'circleci/node:8.17'
+    working_directory: ~/repo
+    steps:
+      - checkout
+      - dotenv/source:
+          path: .env
+      - run: make build
 workflows:
   heroku_deploy:
     jobs:
