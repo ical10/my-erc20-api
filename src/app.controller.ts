@@ -1,6 +1,7 @@
 import { Controller, Get, Query, Param, Post, Body } from '@nestjs/common';
-import { AppService, ClaimPaymentDTO } from './app.service';
+import { AppService } from './app.service';
 import { PaymentOrderDto } from './dto/payment-order.dto';
+import { ClaimPaymentDto } from './dto/claim-payment.dto';
 
 @Controller()
 export class AppController {
@@ -42,7 +43,7 @@ export class AppController {
   }
 
   @Post('claim-payment')
-  claimPayment(@Body() body: ClaimPaymentDTO) {
-    this.appService.claimPayment(body);
+  claimPayment(@Body() body: ClaimPaymentDto) {
+    return this.appService.claimPayment(body);
   }
 }
