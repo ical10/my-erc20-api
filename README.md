@@ -22,6 +22,10 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
+## Live Demo
+
+App is deployed via Heroku + Circleci. Check it here: https://my-erc20-api.herokuapp.com/api/
+
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
