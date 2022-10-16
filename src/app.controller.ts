@@ -1,6 +1,6 @@
 import { Controller, Get, Query, Param, Post, Body } from '@nestjs/common';
-import { AppService, PaymentOrder, ClaimPaymentDTO } from './app.service';
-import { ApiProperty } from '@nestjs/swagger';
+import { AppService, ClaimPaymentDTO } from './app.service';
+import { PaymentOrderDto } from './dto/payment-order.dto';
 
 @Controller()
 export class AppController {
@@ -36,9 +36,8 @@ export class AppController {
     this.appService.getPaymentOrderById(id);
   }
 
-  @ApiProperty({ type: PaymentOrder })
   @Post('create-order')
-  createOrder(@Body() body: PaymentOrder) {
+  createOrder(@Body() body: PaymentOrderDto) {
     return this.appService.createPaymentOrder(body);
   }
 
