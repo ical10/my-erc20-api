@@ -4,6 +4,12 @@ import * as TokenJson from './assets/MyToken.json';
 
 const CONTRACT_ADDRESS = '0xdefE3Eb7407f22c6be1bd668C79f5a5874b79D27';
 
+export class ClaimPaymentDTO {
+  id: string;
+  secret: string;
+  address: string;
+}
+
 export class PaymentOrder {
   id: string;
   secret: string;
@@ -50,5 +56,30 @@ export class AppService {
 
   createPaymentOrder(body: PaymentOrder) {
     this.database.push(body);
+  }
+
+  getPaymentOrderById(id: string) {
+    const element = this.database.find((entry) => entry.id === id);
+    if (!element) return false;
+    return { id: element.id, amount: element.amount };
+  }
+
+  listPaymentOrders() {
+    const filteredDatabase = [];
+
+    this.database.forEach((element) => {
+      filteredDatabase.push({ id: element.id, amount: element.amount });
+    });
+
+    return filteredDatabase;
+  }
+
+  claimPayment(body: ClaimPaymentDTO) {
+    const element = this.database.find((entry) => entry.id === body.id);
+    //if (!element) throw new HttpException('Not Found', 404);
+    //if (body.secret != element.secret)
+    return (
+      body.secret === this.database.find((entry) => entry.id === body.id).secret
+    );
   }
 }
