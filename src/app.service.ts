@@ -3,6 +3,8 @@ import { ethers } from 'ethers';
 import { PaymentOrderDto } from './dto/payment-order.dto';
 import { ClaimPaymentDto } from './dto/claim-payment.dto';
 import * as TokenJson from './assets/MyToken.json';
+import * as dotenv from 'dotenv';
+dotenv.config();
 
 //const TOKENISED_BALLOT_CONTRACT_ADDRESS =
 //'0xCf9d8A1B61b4F3f10161294fE2fD229D1cdd22E8';
