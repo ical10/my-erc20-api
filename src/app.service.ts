@@ -3,7 +3,9 @@ import { ethers } from 'ethers';
 import { PaymentOrderDto } from './dto/payment-order.dto';
 import * as TokenJson from './assets/MyToken.json';
 
-const CONTRACT_ADDRESS = '0xdefE3Eb7407f22c6be1bd668C79f5a5874b79D27';
+//const TOKENISED_BALLOT_CONTRACT_ADDRESS =
+//'0xCf9d8A1B61b4F3f10161294fE2fD229D1cdd22E8';
+const ERC20_CONTRACT_ADDRESS = '0xdefE3Eb7407f22c6be1bd668C79f5a5874b79D27';
 
 export class ClaimPaymentDTO {
   id: string;
@@ -21,7 +23,7 @@ export class AppService {
   constructor() {
     this.provider = ethers.getDefaultProvider('goerli');
     this.contract = new ethers.Contract(
-      CONTRACT_ADDRESS,
+      ERC20_CONTRACT_ADDRESS,
       TokenJson.abi,
       this.provider,
     );
