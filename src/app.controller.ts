@@ -2,8 +2,6 @@ import { Controller, Get, Query, Param, Post, Body } from '@nestjs/common';
 import { AppService } from './app.service';
 import { PaymentOrderDto } from './dto/payment-order.dto';
 import { ClaimPaymentDto } from './dto/claim-payment.dto';
-import { DelegateVoteDTO } from './dto/delegate-vote.dto';
-import { VoteDTO } from './dto/vote.dto';
 
 @Controller()
 export class AppController {
@@ -48,31 +46,4 @@ export class AppController {
   claimPayment(@Body() body: ClaimPaymentDto) {
     return this.appService.claimPayment(body);
   }
-
-  @Post('request-voting-tokens')
-  requestVotingTokens(@Body() body: any) {
-    return this.appService.requestVotingTokens(body);
-  }
-
-  @Post('vote')
-  castVotes(@Body() body: VoteDTO) {
-    return this.appService.castVotes(body);
-  }
-
-  @Post('delegate-vote')
-  delegateVote(@Body() body: DelegateVoteDTO) {
-    return this.appService.delegateVote(body);
-  }
-
-  @Get('voting-result')
-  getVoteResult() {
-    return this.appService.getVoteResult();
-  }
-
-  @Get('vote-power/:address')
-  getVotePower(@Param('address') address: string) {
-    return this.appService.getVotePower(address);
-  }
-
-  //Finish the voting dApp to cast votes, delegate and query results on chain
 }
